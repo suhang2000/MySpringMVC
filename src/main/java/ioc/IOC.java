@@ -28,8 +28,8 @@ public class IOC {
                 // traverse fields in a bean
                 if (field.isAnnotationPresent(Autowired.class)) {
                     // this field is annotated by Autowired
-                    final Class<?> fieldType = field.getType();
-                    Object fieldValue = getClassInstance(fieldType); // create instance
+                    final Class<?> fieldType = field.getType();  // get the class of given field, then retrieve the instance by the class
+                    Object fieldValue = getClassInstance(fieldType);  // get instance by above type class
                     if (null != fieldValue) {
                         ClassUtil.setField(field, targetBean, fieldValue);
                     } else {
@@ -43,6 +43,9 @@ public class IOC {
     private Object getClassInstance(final Class<?> clz) {
         return Optional.ofNullable(beanContainer.getBean(clz))
                 .orElseGet(() -> {
+                    // if there is no matching class in beanContainer
+                    // maybe this class is an interface
+                    // then we go to find its implementation class
                     Class<?> implementClass = getImplementClass(clz);
                     if (null != implementClass) {
                         return beanContainer.getBean(implementClass);
@@ -51,6 +54,7 @@ public class IOC {
                 });
     }
 
+    // get the implementation class of an interface
     private Class<?> getImplementClass(final Class<?> interfaceClass) {
         return beanContainer.getClassesBySuper(interfaceClass)
                 .stream()

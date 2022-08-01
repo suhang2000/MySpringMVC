@@ -4,7 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 
 @Slf4j
-public class IOCTest {
+public class TestIOC {
     @Test
     public void doIOCTest() {
         BeanContainer beanContainer = BeanContainer.getInstance();

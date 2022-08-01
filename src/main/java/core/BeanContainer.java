@@ -1,5 +1,6 @@
 package core;
 
+import aop.annotation.Aspect;
 import core.annotation.Component;
 import core.annotation.Controller;
 import core.annotation.Repository;
@@ -24,7 +25,8 @@ public class BeanContainer {
     private boolean isLoadBean = false;
 
     // annotations list of bean
-    private static final List<Class<? extends Annotation>> BEAN_ANNOTATION = Arrays.asList(Component.class, Controller.class, Service.class, Repository.class);
+    private static final List<Class<? extends Annotation>> BEAN_ANNOTATION
+            = Arrays.asList(Component.class, Controller.class, Service.class, Repository.class, Aspect.class);
 
     public static BeanContainer getInstance() {
         return ContainerHolder.HOLDER.instance;
@@ -87,11 +89,12 @@ public class BeanContainer {
 
     /**
      * get classes in beanMap by Implementation class or Parent class
+     * from an interface class to get its implementation classes
      */
     public Set<Class<?>> getClassesBySuper(Class<?> superClass) {
         return beanMap.keySet()
                 .stream()
-                .filter(superClass::isAssignableFrom)
+                .filter(superClass::isAssignableFrom)  // Whether the type is compatible
                 .filter(clazz -> !clazz.equals(superClass))
                 .collect(Collectors.toSet());
     }

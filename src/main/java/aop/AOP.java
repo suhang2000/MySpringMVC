@@ -20,7 +20,7 @@ public class AOP {
                 .filter(clazz -> clazz.isAnnotationPresent(Aspect.class))
                 // find the classes annotated with `Aspect`
                 .forEach(clazz -> {
-                    final Advice advice = (Advice) beanContainer.getBean(clazz);
+                    final Advice advice = (Advice) beanContainer.getBean(clazz);  // aspect
                     Aspect aspect = clazz.getAnnotation(Aspect.class);
                     beanContainer.getClassesByAnnotation(aspect.target())
                             .stream()

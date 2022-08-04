@@ -18,15 +18,15 @@ import java.lang.reflect.Method;
 @NoArgsConstructor
 public class ProxyAdvisor {
     private Advice advice;
-
-    public Object doProxy(Object target, Class<?> targetClass, Method method, Object[] args, MethodProxy proxy) throws Throwable {
+    // callback
+    public Object doProxy(Object target, Class<?> targetClass, Method method, Object[] args, MethodProxy methodProxy) throws Throwable {
         Object result = null;
         if (advice instanceof MethodBeforeAdvice) {
             ((MethodBeforeAdvice) advice).before(targetClass, method, args);
         }
         try {
             // execute target's method
-            result = proxy.invokeSuper(target, args);
+            result = methodProxy.invokeSuper(target, args);
             if (advice instanceof AfterReturningAdvice) {
                 ((AfterReturningAdvice) advice).afterReturning(targetClass, result, method, args);
             }

@@ -15,5 +15,6 @@ public class TestAOP {
         new IOC().doIOC();
         TestController controller = (TestController) beanContainer.getBean(TestController.class);
         controller.hello();
+        controller.helloForAspect();
     }
 }

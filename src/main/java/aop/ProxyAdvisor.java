@@ -18,8 +18,13 @@ import java.lang.reflect.Method;
 @NoArgsConstructor
 public class ProxyAdvisor {
     private Advice advice;
+    private ProxyPointcut pointcut;
     // callback
     public Object doProxy(Object target, Class<?> targetClass, Method method, Object[] args, MethodProxy methodProxy) throws Throwable {
+        if (!pointcut.matches(method)) {
+            // if not match, directly invoke original method
+            return methodProxy.invokeSuper(target, args);
+        }
         Object result = null;
         if (advice instanceof MethodBeforeAdvice) {
             ((MethodBeforeAdvice) advice).before(targetClass, method, args);

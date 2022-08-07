@@ -11,4 +11,8 @@ public class TestController {
     public void hello() {
         log.info(testService.helloWorld());
     }
+
+    public void helloForAspect() {
+        log.info("Hello AspectJ");
+    }
 }

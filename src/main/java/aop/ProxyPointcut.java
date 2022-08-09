@@ -9,6 +9,10 @@ import java.lang.reflect.Method;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * 解析AspectJ表达式
+ * parse expression of AspectJ
+ */
 public class ProxyPointcut {
     /**
      * pointcut parser

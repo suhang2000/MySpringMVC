@@ -1,5 +1,5 @@
-import core.annotation.Controller;
-import ioc.annotation.Autowired;
+import lsh.core.annotation.Controller;
+import lsh.ioc.annotation.Autowired;
 import lombok.extern.slf4j.Slf4j;
 
 @Controller

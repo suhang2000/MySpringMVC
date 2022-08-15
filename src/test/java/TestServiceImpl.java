@@ -1,4 +1,4 @@
-import core.annotation.Service;
+import lsh.core.annotation.Service;
 
 @Service
 public class TestServiceImpl implements TestService{

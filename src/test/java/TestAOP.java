@@ -1,7 +1,6 @@
-import aop.AOP;
-import core.BeanContainer;
-import core.annotation.Controller;
-import ioc.IOC;
+import lsh.aop.AOP;
+import lsh.core.BeanContainer;
+import lsh.ioc.IOC;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 

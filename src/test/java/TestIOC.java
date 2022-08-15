@@ -1,5 +1,5 @@
-import core.BeanContainer;
-import ioc.IOC;
+import lsh.core.BeanContainer;
+import lsh.ioc.IOC;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 

@@ -1,13 +1,13 @@
-import aop.advice.AroundAdvice;
-import aop.annotation.Aspect;
-import aop.annotation.Order;
+import lsh.aop.advice.AroundAdvice;
+import lsh.aop.annotation.Aspect;
+import lsh.aop.annotation.Order;
 import lombok.extern.slf4j.Slf4j;
 
 import java.lang.reflect.Method;
 
 @Slf4j
 @Order(2)
-@Aspect(pointcut = "@within(core.annotation.Controller)")
+@Aspect(pointcut = "@within(lsh.core.annotation.Controller)")
 public class TestAspect2 implements AroundAdvice {
     @Override
     public void afterReturning(Class<?> clazz, Object returnValue, Method method, Object[] args) throws Throwable {

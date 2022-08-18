@@ -13,6 +13,10 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
+/**
+ * Scan `RequestMapping` annotation,
+ * request path -> controller instance with corresponding method and parameters
+ */
 @Slf4j
 public class ControllerHandler {
     // path -> controller
